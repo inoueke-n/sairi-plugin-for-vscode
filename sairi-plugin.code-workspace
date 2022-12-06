@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "LSP-extended"
+		},
+		{
+			"path": "server"
+		},
+		{
+			"path": "sairi-collector"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.eol": "\n"
+	}
+}
