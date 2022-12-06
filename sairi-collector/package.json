@@ -1,0 +1,153 @@
+{
+	"name": "@inoueke-n/sairi-collector",
+	"displayName": "sairi-collector",
+	"description": "",
+	"version": "0.6.0",
+	"publisher": "inoueke-n",
+	"contributors": [
+	  {
+		"name": "Naoto Ishida"
+	  },
+	  {
+		"name": "Tetsuya Kanda"
+	  }
+	],
+	"private": true,
+	"engines": {
+		"vscode": "^1.73.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "out/index.js",
+	"contributes": {
+		"configuration": {
+			"title": "sairi",
+			"properties": {
+				"sairi.api.uid": {
+					"type": "string",
+					"default": "USERNAME",
+					"description": "sairi User ID"
+				},
+				"sairi.api.endpoint": {
+					"type": "string",
+					"default": "http://localhost:1192/",
+					"description": "sairi API Endpoint"
+				},
+				"sairi.api.publicKey": {
+					"type": "string",
+					"default": "-----BEGIN PUBLIC KEY-----\n\n-----END PUBLIC KEY-----",
+					"description": "sairi API Public Key"
+				},
+				"sairi.send.automatic.period": {
+					"type": "number",
+					"description": "Automatic send period in minute."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "sairi-collector.authorPage",
+				"title": "Hello World"
+			},
+			{
+				"command": "sairi-collector.checkSettings",
+				"title": "Check settings"
+			},
+			{
+				"command": "sairi-collector.checkAPIHealth",
+				"title": "Check API"
+			},
+			{
+				"command": "sairi-collector.sendDataManually",
+				"title": "Send data"
+			},
+			{
+				"command": "sairi-collector.pauseAutomaticSend",
+				"title": "Stop automatic data send"
+			},
+			{
+				"command": "sairi-collector.onClickHistoryItem",
+				"title": "History item is clicked"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "sairi-collector",
+					"title": "sairi-collector",
+					"icon": "media/data.svg"
+				}
+			]
+		},
+		"views": {
+			"sairi-collector": [
+				{
+					"id": "sairi-collector-status",
+					"name": "Status"
+				},
+				{
+					"id": "sairi-collector-managesend",
+					"name": "Manage Send"
+				},
+				{
+					"id": "sairi-collector-history",
+					"name": "Send History"
+				},
+				{
+					"id": "sairi-collector-feedback",
+					"name": "Feedback"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"not:vscode:prepublish": "NODE_ENV=production webpack --mode production",
+		"not:vscode:prepublish2": "webpack --mode production",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"dependencies": {
+		"@inoueke-n/sairi-common": "^0.6.0",
+		"@inoueke-n/sairi-lsp": "^0.6.0",
+		"axios": "^1.2.0",
+		"folktale": "^3.0.1-ts",
+		"lodash": "^4.17.21",
+		"moment": "^2.29.4",
+		"node-schedule": "^2.1.0",
+		"ramda": "^0.28.0",
+		"vscode-languageclient": "^8.0.2",
+		"ws": "^8.11.0"
+	},
+	"devDependencies": {
+		"@types/glob": "^8.0.0",
+		"@types/lodash": "^4.14.191",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "^18.11.10",
+		"@types/node-schedule": "^2.1.0",
+		"@types/ramda": "^0.28.20",
+		"@types/vscode": "^1.73.1",
+		"@types/ws": "^8.5.3",
+		"@typescript-eslint/eslint-plugin": "^5.45.0",
+		"@typescript-eslint/parser": "^5.45.0",
+		"@vscode/test-electron": "^2.2.0",
+		"babel-loader": "^9.1.0",
+		"eslint": "^8.29.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"glob": "^8.0.3",
+		"mocha": "^10.1.0",
+		"prettier": "^2.8.0",
+		"ts-loader": "^9.4.2",
+		"typescript": "^4.9.3",
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.0"
+	}
+}
